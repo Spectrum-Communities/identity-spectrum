@@ -1,4 +1,8 @@
 ---
+import "../styles/global.css";
+import Navbar from "../components/Navbar.astro";
+import Hero from "../components/Hero.astro";
+import TopicsMarquee from "../components/TopicsMarquee.astro";
 ---
 
 <html lang="en">
@@ -8,9 +12,11 @@
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>AWSPECTRUM</title>
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<Navbar />
+		<Hero />
+		<TopicsMarquee />
 	</body>
 </html>

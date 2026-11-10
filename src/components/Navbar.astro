@@ -1,0 +1,323 @@
+---
+const links = [
+  { label: "Historias", href: "#historias" },
+  { label: "Noticias", href: "#noticias" },
+  { label: "Multimedia", href: "#multimedia" },
+  { label: "Agenda", href: "#agenda" },
+  { label: "Recursos", href: "#recursos" },
+];
+---
+
+<header class="site-header">
+  <div class="nav-wrap">
+    <a
+      href="/"
+      class="brand header-brand"
+      aria-label="AWSPECTRUM, inicio"
+    >
+      AWSPECTRUM
+    </a>
+
+    <nav class="desktop-nav" aria-label="Navegación principal">
+      {links.map((link) => (
+        <a href={link.href}>{link.label}</a>
+      ))}
+    </nav>
+
+    <div class="nav-actions">
+      <a href="#comunidad" class="join-link">
+        Únete a la red
+        <svg
+          class="size-5"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M5 12h14"></path>
+          <path d="m13 6 6 6-6 6"></path>
+        </svg>
+      </a>
+
+      <button
+        type="button"
+        class="button button-icon menu-button"
+        aria-label="Abrir menú"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <!-- Hamburger -->
+        <svg
+          class="icon-menu"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          aria-hidden="true"
+        >
+          <path d="M4 7h16M4 12h16M4 17h16"></path>
+        </svg>
+
+        <!-- Close -->
+        <svg
+          class="icon-close"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          aria-hidden="true"
+        >
+          <path d="m6 6 12 12M18 6 6 18"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile navigation -->
+  <nav
+    id="mobile-menu"
+    class="mobile-nav"
+    aria-label="Navegación móvil"
+    hidden
+  >
+    {links.map((link) => (
+      <a href={link.href}>{link.label}</a>
+    ))}
+  </nav>
+</header>
+
+<style>
+  /* Header */
+
+  .site-header {
+    width: 100%;
+    position: relative;
+    z-index: 100;
+    background: var(--purple);
+  }
+
+  .nav-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: min(90rem, 100%);
+    margin: auto;
+    padding: 1.25rem 4rem;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  /* Brand */
+
+  .brand {
+    color: var(--white);
+    font-family: var(--font-primary);
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.075rem;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  /* Desktop navigation */
+
+  .desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .desktop-nav a {
+    color: var(--white);
+    font-family: var(--font-secondary);
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 200ms ease;
+  }
+
+  .desktop-nav a:hover {
+    color: var(--lime);
+  }
+
+  /* Actions */
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  .join-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+
+    color: var(--white);
+    font-family: var(--font-secondary);
+    font-size: 0.875rem;
+    font-weight: 800;
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .join-link:hover {
+    color: var(--lime);
+  }
+
+  .size-5 {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  /* Mobile button */
+
+  .menu-button {
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    width: 3rem;
+    height: 3rem;
+    padding: 0;
+
+    color: var(--white);
+    background: transparent;
+    border: 2px solid var(--white);
+    border-radius: 50%;
+
+    cursor: pointer;
+  }
+
+  .menu-button svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .icon-close {
+    display: none;
+  }
+
+  .menu-button[aria-expanded="true"] .icon-menu {
+    display: none;
+  }
+
+  .menu-button[aria-expanded="true"] .icon-close {
+    display: block;
+  }
+
+  /* Mobile menu */
+
+  .mobile-nav {
+    width: 100%;
+    padding: 1.5rem 2rem 2rem;
+    background: var(--purple-dark);
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .mobile-nav[hidden] {
+    display: none;
+  }
+
+  .mobile-nav a {
+    display: block;
+    padding: 0.75rem 0;
+
+    color: var(--white);
+    font-family: var(--font-secondary);
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1.5;
+    text-decoration: none;
+
+    transition: color 200ms ease;
+  }
+
+  .mobile-nav a:hover {
+    color: var(--lime);
+  }
+
+  /* Responsive */
+
+  @media (max-width: 900px) {
+    .nav-wrap {
+      padding: 1rem 1.5rem;
+    }
+
+    .desktop-nav {
+      display: none;
+    }
+
+    .join-link {
+      display: none;
+    }
+
+    .menu-button {
+      display: inline-flex;
+    }
+
+    .brand {
+      font-size: 1.75rem;
+      letter-spacing: -0.09rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .nav-wrap {
+      padding: 1rem 1.5rem;
+    }
+
+    .brand {
+      font-size: 1.65rem;
+    }
+
+    .mobile-nav {
+      padding: 1.5rem 2rem 2rem;
+    }
+  }
+</style>
+
+<script>
+  const menuButton = document.querySelector<HTMLButtonElement>(
+    ".menu-button"
+  );
+
+  const mobileMenu = document.querySelector<HTMLElement>(
+    "#mobile-menu"
+  );
+
+  function closeMobileMenu() {
+    if (!menuButton || !mobileMenu) return;
+
+    menuButton.setAttribute("aria-expanded", "false");
+    menuButton.setAttribute("aria-label", "Abrir menú");
+    mobileMenu.hidden = true;
+  }
+
+  menuButton?.addEventListener("click", () => {
+    if (!mobileMenu) return;
+
+    const isOpen =
+      menuButton.getAttribute("aria-expanded") === "true";
+
+    menuButton.setAttribute("aria-expanded", String(!isOpen));
+    menuButton.setAttribute(
+      "aria-label",
+      isOpen ? "Abrir menú" : "Cerrar menú"
+    );
+
+    mobileMenu.hidden = isOpen;
+  });
+
+  mobileMenu?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", closeMobileMenu);
+  });
+</script>
